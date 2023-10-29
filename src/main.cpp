@@ -12,7 +12,7 @@ int main() {
 
   Graph graph(graph_size);
 
-  // graph.print_graph();
+  //graph.graph_info();
 
   switch (sort_method) {
   case 'b':

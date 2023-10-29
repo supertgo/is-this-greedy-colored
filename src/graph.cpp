@@ -14,73 +14,6 @@ Graph::Graph(int size) {
 
 Graph::~Graph() { delete[] vertices; }
 
-// bool isGreedy(Graph* g, int* coloracao) {
-//     int num_vertices = g->GetTamanho();
-//     int* available_colors = new int[num_vertices];
-//     bool* used_colors = new bool[num_vertices];
-
-//     // Initialize available colors and used_colors arrays
-//     for (int i = 0; i < num_vertices; i++) {
-//         available_colors[i] = 1;  // Initialize available colors to 1 and up
-//         used_colors[i] = false;
-//     }
-
-//     int a = 0;
-
-//     for (int i = 0; i < num_vertices; i++) {
-//         int vertex_color = coloracao[i];
-//         used_colors[i] = true;  // Mark the current vertex as used
-
-//         int* neighbors = g->GetVizinhos(i);
-//         int num_neighbors = g->GetNumVizinhos(i);
-
-//         // Mark the colors of neighboring vertices as used
-//         for (int j = 0; j < num_neighbors; j++) {
-//             int neighbor = neighbors[j];
-//             if (neighbor < num_vertices) {
-//                 used_colors[neighbor] = true;
-//             }
-//         }
-
-//         // Determine the smallest available color for the current vertex
-//         for (int j = 0; j < num_neighbors; j++) {
-//             int neighbor_color = coloracao[neighbors[j]];
-//             if (neighbor_color < num_vertices) {
-//                 available_colors[neighbor_color] = 0;
-//             }
-//         }
-
-//         int smallest_available_color = -1;
-//         for (int j = 1; j <= num_vertices; j++) {
-//             if (available_colors[j] == 1) {
-//                 smallest_available_color = j;
-//                 break;
-//             }
-//         }
-
-//         if (smallest_available_color == vertex_color) {
-//             a++;
-//         }
-
-//         // Reset available colors for the next iteration
-//         for (int j = 1; j <= num_vertices; j++) {
-//             available_colors[j] = 1;
-//         }
-//     }
-
-//     delete[] available_colors;
-//     delete[] used_colors;
-
-//     return a == num_vertices;
-// }
-bool Find(int x, int *v, int n) {
-  for (int i = 0; i < n; i++) {
-    if (v[i] == x)
-      return 1;
-  }
-  return 0;
-}
-
 int Graph::isGreedy() {
   int min_color = this->vertices[0].color;
 
@@ -140,6 +73,7 @@ void Graph::initialize_graph() {
 void Graph::print_graph(int is_greedy) {
   if (!is_greedy) {
     std::cout << "0" << std::endl;
+    return;
   }
 
   std::cout << "1 ";

@@ -12,7 +12,6 @@ EXE = $(BIN)/tp2.out
 all: run
 
 run: $(EXE)
-	$(EXE)
 
 $(BIN)/tp2.out: $(OBJS)
 	$(CC) -pg -g -o $(BIN)/tp2.out $(OBJS)
