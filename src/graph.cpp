@@ -5,39 +5,43 @@
 #include <string>
 
 Graph::Graph(int size) {
-  vertices = new Vertex[size];
-  colors = new int[size];
+  this->vertices = new Vertex[size];
+  this->colors = new int[size];
   this->size = size;
 
   initialize_graph();
 }
 
-Graph::~Graph() { delete[] vertices; }
+Graph::~Graph() {
+  delete[] vertices;
+  delete[] colors;
+}
 
 int Graph::isGreedy() {
   int min_color = this->vertices[0].color;
+  if (min_color != 1)
+    return 0;
 
   for (int i = 0; i < this->get_size(); i++) {
-    if (this->vertices[i].color == min_color) {
+    int color = this->vertices[i].color;
+
+    if (color == min_color)
       continue;
-    } else {
-      int current_vertex_neighbor_size = this->vertices[i].neighbors_size;
-      int color = this->vertices[i].color;
 
-      for (int k = 0; k < this->get_size() && this->vertices[k].color < color;
-           k++) {
-        int found = 0;
-        for (int j = 0; j < current_vertex_neighbor_size; j++) {
-          int neighbor_color = colors[this->vertices[i].neighbors[j]];
+    int current_vertex_neighbor_size = this->vertices[i].neighbors_size;
+    for (int k = min_color; k < color; k++) {
+      int found = 0;
+      for (int j = 0; j < current_vertex_neighbor_size; j++) {
+        int neighbor_color = colors[this->vertices[i].neighbors[j]];
 
-          if (this->vertices[k].color == neighbor_color) {
-            found = 1;
-          }
+        if (k == neighbor_color) {
+          found = 1;
+          break;
         }
-
-        if (!found)
-          return 0;
       }
+
+      if (!found)
+        return 0;
     }
   }
   return 1;

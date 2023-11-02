@@ -12,8 +12,6 @@ int main() {
 
   Graph graph(graph_size);
 
-  //graph.graph_info();
-
   switch (sort_method) {
   case 'b':
     bubble_sort(graph.get_vertices(), graph_size);
