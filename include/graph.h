@@ -2,7 +2,7 @@
 #define GRAPH_H
 
 #include "vertex.h"
-#include <string>
+#include "memlog.h"
 
 class Graph {
 public:

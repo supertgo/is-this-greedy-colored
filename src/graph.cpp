@@ -56,12 +56,20 @@ void Graph::initialize_graph() {
   for (int i = 0; i < this->size; i++) {
     std::cin >> neighbors;
     this->vertices[i].label = i;
+    ESCREVEMEMLOG((long int)(&(this->vertices[i])), sizeof(double),
+                  this->vertices[i].label);
     this->vertices[i].neighbors_size = neighbors;
+    ESCREVEMEMLOG((long int)(&(this->vertices[i].neighbors_size)),
+                  sizeof(double), this->vertices[i].label);
     this->vertices[i].neighbors = new int[neighbors];
+    ESCREVEMEMLOG((long int)(&(this->vertices[i].neighbors)), sizeof(double),
+                  this->vertices[i].label);
 
     for (int j = 0; j < neighbors; j++) {
       std::cin >> neighbor;
       this->vertices[i].neighbors[j] = neighbor;
+      ESCREVEMEMLOG((long int)(&(this->vertices[i].neighbors[j])),
+                    sizeof(double), this->vertices[i].label);
     }
   }
 
@@ -70,6 +78,8 @@ void Graph::initialize_graph() {
     std::cin >> color;
 
     this->vertices[c].color = color;
+    ESCREVEMEMLOG((long int)(&(this->vertices[c].color)), sizeof(double),
+                  this->vertices[c].label);
     this->colors[c] = color;
   }
 }
@@ -82,6 +92,8 @@ void Graph::print_graph(int is_greedy) {
 
   std::cout << "1 ";
   for (int i = 0; i < this->size; i++) {
+    LEMEMLOG((long int)(&(this->vertices[i].label)), sizeof(double),
+             this->vertices[i].label);
     if (i == this->size - 1) {
       std::cout << this->vertices[i].label << std::endl;
     } else {
