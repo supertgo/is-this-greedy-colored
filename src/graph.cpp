@@ -13,6 +13,9 @@ Graph::Graph(int size) {
 }
 
 Graph::~Graph() {
+  for (int i = 0; i < this->size; i++) {
+    delete[] this->vertices[i].neighbors;
+  }
   delete[] vertices;
   delete[] colors;
 }
