@@ -33,6 +33,8 @@ int main() {
     break;
   case 'y':
     insertion_sort(graph.get_vertices(), graph_size);
+  default:
+    throw std::runtime_error("Método de classificação desconhecido");
     break;
   };
 

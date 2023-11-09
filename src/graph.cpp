@@ -22,12 +22,14 @@ Graph::~Graph() {
 
 int Graph::isGreedy() {
   int min_color = this->vertices[0].color;
+  // Se a primeira cor não é 1, a coloração não é gulosa
   if (min_color != 1)
     return 0;
 
   for (int i = 0; i < this->get_size(); i++) {
     int color = this->vertices[i].color;
 
+    // Passa para a próxima posição caso a cor do vértice atual seja 1
     if (color == min_color)
       continue;
 
@@ -62,6 +64,7 @@ void Graph::initialize_graph() {
     this->vertices[i].neighbors_size = neighbors;
     this->vertices[i].neighbors = new int[neighbors];
 
+    // Atribui os vizinhos ao vértice do grafo
     for (int j = 0; j < neighbors; j++) {
       std::cin >> neighbor;
       this->vertices[i].neighbors[j] = neighbor;
@@ -69,6 +72,7 @@ void Graph::initialize_graph() {
   }
 
   int color;
+  // Preenche o array de coloração e as cores do vértice
   for (int c = 0; c < this->size; c++) {
     std::cin >> color;
 
@@ -90,20 +94,6 @@ void Graph::print_graph(int is_greedy) {
     } else {
       std::cout << this->vertices[i].label << " ";
     }
-  }
-}
-
-void Graph::graph_info() {
-  for (int i = 0; i < this->size; i++) {
-    std::cout << "Vertex: " << this->vertices[i].label << " with color "
-              << this->vertices[i].color << std::endl;
-
-    std::cout << "Neighbors: ";
-    for (int j = 0; j < this->vertices[i].neighbors_size; j++) {
-      std::cout << this->vertices[i].neighbors[j] << " ";
-    }
-
-    std::cout << std::endl;
   }
 }
 

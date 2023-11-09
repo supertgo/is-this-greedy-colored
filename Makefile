@@ -4,8 +4,8 @@ SRC = src
 OBJ = obj
 INC = include
 BIN = bin
-HDRS = $(INC)/graph.h $(INC)/heap.h $(INC)/vertex.h
-OBJS = $(OBJ)/main.o $(OBJ)/graph.o $(OBJ)/heap.o $(OBJ)/vertex.o
+HDRS = $(INC)/graph.h $(INC)/vertex.h $(INC)/sort.h
+OBJS = $(OBJ)/main.o $(OBJ)/graph.o $(OBJ)/vertex.o
 CFLAGS = -Wall -g -c -I$(INC) -std=c++11
 EXE = $(BIN)/tp2.out
 
