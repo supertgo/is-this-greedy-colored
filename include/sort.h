@@ -254,6 +254,7 @@ template <typename T> void cocktail_sort(T *items, int size) {
   }
 }
 
+// Função para realizar a troca de contéudo dos elementos do array
 template <typename T> void swap(T &x, T &y) {
   T temp = x;
   x = y;
